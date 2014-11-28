@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+   
+    <managed-bean>
+        <managed-bean-name>loginMB</managed-bean-name>
+        <managed-bean-class>controller.LoginMB</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>cadastroCliente</managed-bean-name>
+        <managed-bean-class>controller.CadastroCliente</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>clienteService</managed-bean-name>
+        <managed-bean-class>model.ClienteService</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>cadastroAnimal</managed-bean-name>
+        <managed-bean-class>controller.CadastroAnimal</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>animalService</managed-bean-name>
+        <managed-bean-class>model.AnimalService</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>especiesAnimal</managed-bean-name>
+        <managed-bean-class>controller.EspeciesAnimalBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>clientesMB</managed-bean-name>
+        <managed-bean-class>controller.ClientesMB</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+
+</faces-config>

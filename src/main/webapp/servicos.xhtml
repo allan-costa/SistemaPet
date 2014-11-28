@@ -1,0 +1,167 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Principal</title>
+	
+	<link rel="stylesheet" type="text/css" href="CSS/estilo-padrao.css" />
+	
+	
+	<f:metadata>
+    	<f:event listener="#{loginMB.verificaLogin}" type="preRenderView"/>
+	</f:metadata>  
+
+</h:head>
+<h:body >
+	<p:layout fullPage="true" >
+	
+		<p:layoutUnit position="north" id="topo"  size="139" resizable="false" closable="false" collapsible="false">
+		
+		<table>
+		  <tr>
+		    <td ><h:graphicImage url="/images/logo2.bmp" width="235" height="128" /></td>
+		    <td id="menu-top" align="right" valign="bottom">
+		    <h:form >
+			    <p:tabMenu activeIndex="0" >
+		    		<p:menuitem value="Principal" url="/index.jsf" icon="ui-icon-home"/>
+		    		<p:menuitem value="Configurações" url="/ui/tabMenuSocial.jsf" icon="ui-icon-wrench" />
+		    		<p:menuitem value="Ajuda" url="/ui/tabMenuSupport.jsf" icon="ui-icon-help"/>
+		    		<p:menuitem value="Sair" actionListener="#{loginMB.logout}"  icon="ui-icon-power" />
+				</p:tabMenu>
+			</h:form>
+		</td>
+		
+		<td id="usuario" align="right">
+			  <h:outputText value="Usuário: #{loginMB.usuario.login}"/>
+			
+		</td>
+		
+		<td align="right" >
+			<p:clock id="data"/>
+
+		</td>
+			
+		  </tr>
+
+		</table>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="238" resizable="false" closable="false" collapsible="false">
+			<h:form> 
+    <p:growl id="messages" showDetail="false"/>
+ 
+    <p:menu  id="menu">
+        <p:submenu label="Menu">            
+			<p:menuitem value="Cadastro de Animais" url="/cadastro-animal.jsf" icon="ui-icon-grip-dotted-horizontal" />
+			<p:menuitem value="Cadastro de Clientes" url="/cadastro-cliente.jsf" icon="ui-icon-grip-dotted-horizontal"/>
+			<p:menuitem value="Controle de Estoque" icon="ui-icon-grip-dotted-horizontal" />
+			<p:menuitem value="Fornecedores"  icon="ui-icon-grip-dotted-horizontal"/>		
+            <p:menuitem value="Financeiro" icon="ui-icon-grip-dotted-horizontal" />
+            <p:menuitem value="Serviços" icon="ui-icon-grip-dotted-horizontal" />
+            <p:menuitem value="Agenda" outcome="/agenda" icon="ui-icon-calendar"/>
+            <p:menuitem value="Mensagens"  icon="ui-icon-mail-closed"/>
+            <p:menuitem value="Consultas"  icon="ui-icon-search"/>
+            <p:menuitem value="Vendas"  icon="ui-icon-cart"/>
+            <p:menuitem value="Controle de Usuário"  icon="ui-icon-person"/> 
+        </p:submenu>
+    </p:menu>
+    </h:form>
+
+		</p:layoutUnit>
+
+		<p:layoutUnit  position="center">
+			<h:form>
+				<table id="centro-servicos"  CELLSPACING="50">
+				<tr>
+					
+					<td> Nova O.S <br/> <a href="/....jsf">  <h:graphicImage url="/images/nova-os.png" width="150" height="80" /></a></td>
+					
+				</tr>
+				
+				<tr>
+					<td> Pesquisar O.S <br/> 
+					
+						<h:form prependId="false">  
+							              
+							    <p:messages showDetail="true"/>  
+							      
+							    <h:panelGrid columns="4">  
+							      
+							        <h:outputLabel value="Pesquisa: "/>  
+							        <p:inputText id="keyword" value="#{watermarkBean.keyword}" required="true" />  
+							        <p:watermark for="keyword" value="Nome ou ID do cliente" />  
+							         <p:commandLink actionListener="#{watermarkBean.search}" ajax="false">    
+								 		<p:graphicImage  url="/images/pesquisa.jpg" width="50" height="40" />    
+								    </p:commandLink>  
+							     
+							    </h:panelGrid>  
+						
+						<tr>
+					
+							<td> Ordens de serviços em aberto <br/>
+								<h:form prependId="false">  
+								              
+									    <p:dataList value="#{cadastroOS.servicosAbertos}" var="os"   
+									        paginator="true" rows="5" effectSpeed="fast"  
+									        paginatorTemplate="{PreviousPageLink} {CurrentPageReport} {NextPageLink} {RowsPerPageDropdown}"  
+									        rowsPerPageTemplate="5,10,15">  
+									          
+									        <p:column>  
+									            <p:commandLink update="osDetail" oncomplete="osDialog.show()" title="Detalhes">  
+									            <p:graphicImage value="/images/search.png"/>   
+									            <f:setPropertyActionListener value="#{os}" target="#{cadastroOS.osSelecionada}" />  
+									        </p:commandLink>  
+									          
+									        <h:outputText value="#{os.id}, #{os.data}" style="margin-left:10px" />  
+									          
+									        </p:column>  
+									    </p:dataList>  
+									      
+									    <p:dialog header="Detalhe O.S" widgetVar="osDialog" width="200" height="175" modal="true">  
+									        <p:outputPanel id="osDetail" style="text-align:center;" layout="block">    
+									              
+									            <h:panelGrid  columns="2" cellpadding="5">  
+									                <h:outputLabel for="id" value="ID: " />  
+									                <h:outputText id="id" value="#{cadastroOS.osSelecionada.id}" />  
+									                  
+									                <h:outputLabel for="cliente" value="Cliente: " />  
+									                <h:outputText id="cliente" value="#{cadastroOS.osSelecionada.cliente}" />  
+									                
+									                <h:outputLabel for="descricao" value="Descricao: " />  
+									                <h:outputText id="descricao" value="#{cadastroOS.osSelecionada.descricao}" />
+									                  
+									                <h:outputLabel for="data" value="Data de Abetura: " />  
+									                <h:outputText id="data" value="#{cadastroOS.osSelecionada.data}" />  
+									            </h:panelGrid>  
+									        </p:outputPanel>  
+									    </p:dialog>  
+	  
+									</h:form> 
+							</td>
+					
+						</tr>
+					      
+					</h:form> 
+					
+					
+					</td>
+					
+					
+				</tr>
+				
+				</table>
+
+
+			</h:form>
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="south" id="rodape"  size="70" resizable="false" closable="false" collapsible="false">
+			<p align="center">© 2014 Todos os direitos reservados. v2.0</p>  
+		</p:layoutUnit>
+
+	</p:layout>
+</h:body>
+</html>

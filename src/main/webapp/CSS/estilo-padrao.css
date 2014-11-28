@@ -1,0 +1,138 @@
+    .ui-layout-north {  
+        z-index: 30 !important;  
+        overflow: visible !important;  
+    }  
+      
+    .ui-layout-north .ui-layout-unit-content {  
+        overflow: visible !important;  
+    } 
+     .ui-layout-west {  
+        z-index: 30 !important;  
+        overflow: visible !important;  
+    }  
+      
+    .ui-layout-west .ui-layout-unit-content {  
+        overflow: visible !important;  
+    }  
+    
+    .ui-layout-south {  
+        z-index: 30 !important;  
+        overflow: visible !important;  
+    }  
+      
+    .ui-layout-south .ui-layout-unit-content {  
+        overflow: visible !important;  
+    }
+      
+    #topoORIGI {  
+        border-top: none;  
+        border-left: none;  
+        border-right: none;  
+        border-bottom: none;  
+        clear: both;  
+        padding: 0;  
+    }  
+    
+    #topo {  
+    width: 750px;  
+    margin: 0 auto;  
+    height: auto;  
+    position: relative;  
+    padding: 0px 0px;  
+    text-align: left; /* "remédio" para o hack do IE */  
+} 
+    
+    #rodape{  
+    font-size:16px;  
+    color:#FFFFFF;  
+	}
+	 
+    #RodapeORIGI {
+    	border-top: none;  
+        border-left: none;  
+        border-right: none;  
+        border-bottom: none;  
+        clear: both;  
+        position: relative;
+    
+    }
+    
+    #usuario {
+	position:absolute;
+	top:70;
+	left: 700;
+	font-family: Cambria;
+	font-size: 15px;
+	color: navy;
+	
+	}
+	
+	#data {
+	position:absolute;
+	top:108;
+	left: 700;
+	font-family: Cambria;
+	font-size: 13px;
+	color: navy;
+	}
+	
+	#menu-top {
+	position:absolute;
+	top:98;
+	left: 242;
+	font-family: Cambria;
+	font-size: 13px;
+	color: navy;
+	}
+	
+	
+	#centro-index {
+	float: center;
+	padding: 10px;
+	font-family: calibri;
+	color: #6495ED;
+	font-size: 13px;
+	text-align: left;
+	}
+	
+	#centro-servicos {
+	float: left;
+	padding: 10px;
+	font-family: calibri;
+	color: #6495ED;
+	font-size: 16px;
+	text-align: left;
+	cellspacing="50"
+	
+	}
+	
+	a:hover {
+		background:highlighttext; 
+		color:red;
+		text-decoration: underline;
+		
+		
+	}
+	
+	a:link, a:visited {
+	text-decoration: none
+	}
+	
+	
+	#menu {
+		float: left;
+		padding: 2px;
+		font-family: calibri;
+		color: #6495ED;
+		font-size: 50px;
+		text-align: left;
+	}
+	
+	body{   
+    font-size:16px;  
+    color:black;  
+    font-family:helvetica, arial, sans-serif;  
+    background-color: #000000;  
+    text-align:center; /* hack para o IE */  
+    margin: 0px;  
+}  

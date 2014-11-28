@@ -1,0 +1,230 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de animais</title>
+
+		<link rel="stylesheet" type="text/css" href="CSS/estilo-padrao.css" />
+		
+		<f:metadata>
+			<f:event listener="#{loginMB.verificaLogin}" type="preRenderView" />
+		</f:metadata>
+</h:head>
+
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" id="topo" size="139" resizable="false"
+			closable="false" collapsible="false">
+
+			<table>
+		  <tr>
+		    <td ><h:graphicImage url="/images/logo2.bmp" width="235" height="128" /></td>
+		    <td id="menu-top" align="right" valign="bottom">
+		    <h:form>
+			    <p:tabMenu activeIndex="-1" >
+		    		<p:menuitem value="Principal" url="/index.jsf" icon="ui-icon-home"/>
+		    		<p:menuitem value="Configurações" url="/ui/tabMenuSocial.jsf" icon="ui-icon-wrench" />
+		    		<p:menuitem value="Ajuda" url="/ui/tabMenuSupport.jsf" icon="ui-icon-help"/>
+		    		<p:menuitem value="Sair" actionListener="#{loginMB.logout}"  icon="ui-icon-power" />
+				</p:tabMenu>
+			</h:form>
+		</td>
+		
+		<td id="usuario" align="right">
+			  <h:outputText value="Bem vindo:  #{loginMB.usuario.login}"/>
+			
+		</td>
+		
+		<td align="right" >
+			<p:clock id="data"/>
+
+		</td>
+			
+		  </tr>
+
+		</table>
+		</p:layoutUnit>
+
+
+
+		<p:layoutUnit position="west" size="238" resizable="false"
+			closable="false" collapsible="false">
+			<h:form>
+				<p:growl id="messages" showDetail="false" />
+
+				<p:menu>
+					<p:submenu label="Menu">
+						<p:menuitem value="Cadastro de Animais"
+							icon="ui-icon-grip-dotted-horizontal" />
+						<p:menuitem value="Cadastro de Clientes"
+							url="/cadastro-cliente.jsf" icon="ui-icon-grip-dotted-horizontal" />
+						<p:menuitem value="Controle de Estoque"
+							icon="ui-icon-grip-dotted-horizontal" />
+						<p:menuitem value="Fornecedores"
+							icon="ui-icon-grip-dotted-horizontal" />
+						<p:menuitem value="Financeiro"
+							icon="ui-icon-grip-dotted-horizontal" />
+						<p:menuitem value="Serviços" icon="ui-icon-grip-dotted-horizontal" />
+						<p:menuitem value="Agenda" outcome="/agenda"
+							icon="ui-icon-calendar" />
+						<p:menuitem value="Mensagens" icon="ui-icon-mail-closed" />
+						<p:menuitem value="Consultas" icon="ui-icon-search" />
+						<p:menuitem value="Vendas" icon="ui-icon-cart" />
+						<p:menuitem value="Controle de Usuário" icon="ui-icon-person" />
+
+
+					</p:submenu>
+				</p:menu>
+			</h:form>
+
+		</p:layoutUnit>
+
+
+		<p:layoutUnit position="center">
+
+				<p:panel header="Cadastro de animais" style="margin-bottom:10px;">
+					
+							<p:panelGrid columns="2">
+								<h:form>
+									<table>
+
+										<tr>
+											<td><p:outputLabel value="Nome" /></td>
+											<td><p:inputText value="#{cadastroAnimal.animal.nome}"
+													id="nome" size="25" /></td>
+										</tr>
+
+										<tr>
+											<td><p:outputLabel for="especie" value="Espécie " /></td>
+											<td><p:selectOneMenu id="especie" value="#{cadastroAnimal.animal.especie}" style="width:150px">
+													<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+													<f:selectItems value="#{especiesAnimal.especies}" />
+												</p:selectOneMenu></td>
+										</tr>
+
+										<tr>
+											<td><p:outputLabel value="Raça" /></td>
+											<td><p:inputText value="#{cadastroAnimal.animal.raca}"
+													id="raca" size="15" /></td>
+										</tr>
+
+										<tr>
+											<td><p:outputLabel value="Cor" /></td>
+											<td><p:inputText value="#{cadastroAnimal.animal.cor}"
+													id="cor" size="15" /></td>
+										</tr>
+
+										<tr>
+											<td><p:outputLabel for="sexo" value="Sexo" /></td>
+											<td><p:selectOneRadio
+													value="#{cadastroAnimal.animal.sexo}" id="sexo">
+													<f:selectItem itemLabel="M" itemValue="Macho" />
+													<f:selectItem itemLabel="F" itemValue="Fêmea" />
+												</p:selectOneRadio></td>
+										</tr>
+
+										<tr>
+											<td><p:outputLabel value="Nascimento" /></td>
+											<td><p:inputMask id="date" mask="99/99/9999" size="10" />
+											</td>
+										</tr>
+										
+										<tr>
+											<td><p:outputLabel value="Cliente " /></td>
+											<td><p:selectOneMenu value="#{cadastroAnimal.animal.idDono}" id="dono" style="width:150px" >
+													
+													<f:selectItems value="#{clientesMB.clientes}"  />
+												</p:selectOneMenu></td>
+										</tr>
+
+										<tr>
+											<td><p:outputLabel value="Observações" /></td>
+											<td><p:inputTextarea value="#{cadastroAnimal.animal.obs}" rows="5" cols="50" queryDelay="750" minQueryLength="4" autoResize="false" /></td>
+										</tr>
+										<tr>
+											<td><p:commandButton type="submit" value="Salvar"
+													action="#{cadastroAnimal.salvar}" /></td>
+											<td><p:commandButton value="Limpar" type="reset" /></td>
+										</tr>
+									</table>
+									
+								</h:form>
+
+								
+								
+								<h:form>
+
+									<div style="height: 350px; width: 1100px; overflow: auto">
+										<p:dataTable id="tbl" var="animal" value="#{cadastroAnimal.animais}" paginator="true" rows="10">  
+										    <p:column>  
+										        <f:facet name="header">  
+										            <h:outputText value="Id" />  
+										        </f:facet>  
+										        <h:outputText value="#{animal.id}" />  
+										    </p:column>  
+										  
+										    <p:column>  
+										        <f:facet name="header">  
+										            <h:outputText value="Nome" />  
+										        </f:facet>  
+										        <h:outputText value="#{animal.nome}"/>  
+										    </p:column>  
+										  
+										    <p:column>  
+										        <f:facet name="header">  
+										            <h:outputText value="Especie" />  
+										        </f:facet>  
+										        <h:outputText value="#{animal.especie}" />  
+										    </p:column>  
+										  
+										    <p:column>  
+										        <f:facet name="header">  
+										            <h:outputText value="Raça" />  
+										        </f:facet>  
+										        <h:outputText value="#{animal.raca}" />  
+										    </p:column>
+										    
+										    <p:column>  
+										        <f:facet name="header">  
+										            <h:outputText value="Dono" />  
+										        </f:facet>  
+										        <h:outputText value="#{animal.dono.nome}" />  
+										    </p:column>  
+										   
+											<p:column style="width:30px"><f:facet name="header"></f:facet ><h:commandLink action="#{cadastroAnimal.excluir(animal)}"> <p:graphicImage value="/images/excluir.jpg"  width="20" height="20"/> </h:commandLink></p:column> 
+										    
+										</p:dataTable>
+										  
+										    
+										        <h:commandLink>  
+										            <p:graphicImage value="/images/excel.png" />  
+										            <p:dataExporter type="xls" target="tbl" fileName="animais" />  
+										        </h:commandLink>  
+										  
+										        <h:commandLink>  
+										            <p:graphicImage value="/images/pdf.png" />  
+										            <p:dataExporter type="pdf" target="tbl" fileName="animais"/>  
+										        </h:commandLink>  
+										            
+										       
+									</div>
+								</h:form>
+
+								
+							</p:panelGrid>
+				</p:panel>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" id="rodape" size="70" resizable="false"
+			closable="false" collapsible="false">
+			
+			<p align="center">© 2014 Todos os direitos reservados. v2.0</p>
+		</p:layoutUnit>
+
+	</p:layout>
+</h:body>
+</html>

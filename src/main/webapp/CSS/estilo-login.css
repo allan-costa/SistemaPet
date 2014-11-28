@@ -1,0 +1,52 @@
+ .ui-layout-center {  
+        z-index: 30 !important;  
+        overflow: visible !important;  
+    }  
+      
+    .ui-layout-center .ui-layout-unit-content {  
+        overflow: visible !important;  
+        
+    } 
+    
+      .ui-layout-west {  
+        z-index: 30 !important;  
+        overflow: visible !important;  
+    }  
+      
+    .ui-layout-west .ui-layout-unit-content {  
+        overflow: visible !important;  
+    } 
+    
+#principal {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -260px;
+	margin-top: -135px;
+	width: 520px;
+	height: 270px;
+	border: 2px solid #6495ED;
+	padding: 10px;
+	text-align: left;
+	font-family: calibri;
+	font-size: 13px;
+	border-radius: 50px;
+}
+
+#msg1 {
+	float: left;
+	padding: 10px;
+	font-family: Cambria;
+	font-size: 21px;
+	color: #6495ED;
+	text-align: left;
+}
+
+#msg2 {
+	float: left;
+	padding: 10px;
+	font-family: calibri;
+	color: #6495ED;
+	font-size: 15px;
+	text-align: left;
+}

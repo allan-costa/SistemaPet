@@ -1,0 +1,236 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de clientes</title>
+	
+	<link rel="stylesheet" type="text/css" href="CSS/estilo-padrao.css" />
+	
+	<f:metadata>
+    	<f:event listener="#{loginMB.verificaLogin}" type="preRenderView"/>
+	</f:metadata>  
+</h:head>
+
+<h:body>
+	<p:layout fullPage="true" >
+
+		<p:layoutUnit position="north" id="topo"  size="139" resizable="false"
+			closable="false"  collapsible="false">
+		
+		<table>
+		  <tr>
+		    <td align="left" valign="bottom"><h:graphicImage url="/images/logo2.bmp" width="235" height="128" /></td>
+		    <td id="menu-top" align="right" valign="bottom">
+		    <h:form>
+		    <p:tabMenu activeIndex="-1">
+    		<p:menuitem value="Principal" url="/index.jsf" icon="ui-icon-home"/>
+    		<p:menuitem value="Configurações" url="/ui/tabMenuSocial.jsf" icon="ui-icon-wrench" />
+    		<p:menuitem value="Ajuda" url="/ui/tabMenuSupport.jsf" icon="ui-icon-help"/>
+    		<p:menuitem value="Sair" actionListener="#{loginMB.logout}"  icon="ui-icon-power" />
+    		
+			</p:tabMenu>
+			</h:form>
+		</td>
+		
+		<td id="usuario" align="right" valign="bottom">
+			  <h:outputText value="Bem vindo:  #{loginMB.usuario.login}"/>
+			
+		</td>
+		
+		<td align="right" valign="bottom">
+			<p:clock id="data"/>
+			
+		</td>
+			
+		  </tr>
+
+		</table>
+		</p:layoutUnit>
+
+		
+
+		<p:layoutUnit position="west" size="238" resizable="false" closable="false" collapsible="false">
+			<h:form> 
+    <p:growl id="messages" showDetail="false"/>
+ 
+    <p:menu>
+        <p:submenu label="Menu">            
+			<p:menuitem value="Cadastro de Animais" url="/cadastro-animal.jsf" icon="ui-icon-grip-dotted-horizontal" />
+			<p:menuitem value="Cadastro de Clientes"  icon="ui-icon-grip-dotted-horizontal"/>
+			<p:menuitem value="Controle de Estoque" icon="ui-icon-grip-dotted-horizontal" />
+			<p:menuitem value="Fornecedores"  icon="ui-icon-grip-dotted-horizontal"/>		
+            <p:menuitem value="Financeiro" icon="ui-icon-grip-dotted-horizontal" />
+            <p:menuitem value="Serviços" icon="ui-icon-grip-dotted-horizontal" />
+            <p:menuitem value="Agenda" outcome="/agenda" icon="ui-icon-calendar"/>
+            <p:menuitem value="Mensagens"  icon="ui-icon-mail-closed"/>
+            <p:menuitem value="Consultas"  icon="ui-icon-search"/>
+            <p:menuitem value="Vendas"  icon="ui-icon-cart"/>
+            <p:menuitem value="Controle de Usuário"  icon="ui-icon-person"/>
+            
+            
+        </p:submenu>
+    </p:menu>
+    </h:form>
+
+		</p:layoutUnit>
+
+		
+		<p:layoutUnit position="center">
+			
+			<p:panel header="Cadastro de clientes" style="margin-bottom:10px;">
+			
+			
+			<p:panelGrid columns="2" >
+			<h:form>
+            
+            <table>
+			
+			<tr>
+				<td> <p:outputLabel value="Nome" /> </td>
+	            <td> <p:inputText value="#{cadastroCliente.cliente.nome}"  size="30"/> </td>
+            </tr>
+            
+            <tr>
+	            <td> <p:outputLabel  value="Sexo"/> </td>
+	            <td>
+		        	<p:selectOneRadio value="#{cadastroCliente.cliente.sexo}" >
+		        	<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+		            <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+		            </p:selectOneRadio>
+	        	</td>
+            </tr>
+            
+            <tr>
+            <td><p:outputLabel value="CPF" /> </td>
+        	<td><p:inputMask id="cpf" value="#{cadastroCliente.cliente.cpf}" mask="999-999-999-99"/> </td>
+            
+            </tr>
+            <tr>
+	            <td><p:outputLabel  value="Dt. Nascimento"/> </td>
+	            <td><p:inputMask id="date" mask="99/99/9999" size="10"/> </td>
+            </tr>
+            
+            <tr>
+	            <td><p:outputLabel for="telefone" value="Telefone" /> </td>
+	        	<td> <p:inputMask id="telefone"  value="#{cadastroCliente.cliente.telefone}" mask="(99) 9999-9999"/></td>
+			</tr>
+			
+			 <tr>
+			<td> <p:outputLabel for="celular" value="Celular" /> </td>
+        	<td> <p:inputMask id="celular"  value="#{cadastroCliente.cliente.celular}" mask="(99) 9999-9999"/> </td>
+			
+			</tr>
+			
+			 <tr>
+				<td> <p:outputLabel  value="E-mail" /> </td>
+	            <td> <p:inputText id="email"  value="#{cadastroCliente.cliente.email}" size="30" placeholder="petshop@gmail.com"/> </td>
+            </tr>
+            <tr>
+	            <td> <p:outputLabel value="Endereco"  /> </td>
+	            <td> <p:inputText id="endereco"  value="#{cadastroCliente.cliente.endereco}" size="50" placeholder="Rua, Setor, nº, Cidade - Estado"/> </td>
+            </tr>
+             <tr>
+	            
+			</tr>
+			<tr>
+			 	 <td> <p:commandButton type="submit" value="Salvar" action="#{cadastroCliente.salvar}" /> </td>
+	        	 <td> <p:commandButton value="Limpar" type="reset" /> </td> 
+				</tr>
+			</table>
+			</h:form>
+			<!-- INICIA TESTE  -->
+			<h:form id="form">
+				   <p:growl id="msgs" showDetail="true"/>
+				 
+				   <p:dataTable id="cars1" var="cliente" value="#{cadastroCliente.clientes}" editable="true" style="margin-bottom:20px">
+				       <f:facet name="header">
+				           Lista de clientes
+				       </f:facet>
+				 
+				       <p:ajax  event="rowEdit" listener="#{cadastroCliente.onRowEdit}" update=":form:msgs" />
+				        
+				       <p:ajax event="rowEditCancel" listener="#{cadastroCliente.onRowCancel}" update=":form:msgs" />
+				 
+				       <p:column headerText="Id">
+				           <p:cellEditor>
+				               <f:facet name="output"><h:outputText value="#{cliente.id}" /></f:facet>
+				               <f:facet name="input"><p:inputText id="modelInput" value="#{cliente.id}" style="width:100%"/></f:facet>
+				           </p:cellEditor>
+				       </p:column>
+				 
+				       <p:column headerText="Nome">
+				           <p:cellEditor>
+				               <f:facet name="output"><h:outputText value="#{cliente.nome}" /></f:facet>
+				               <f:facet name="input"><p:inputText value="#{cliente.nome}" style="width:100%" label="Year"/></f:facet>
+				           </p:cellEditor>
+				       </p:column>
+				       
+				       <p:column headerText="Sexo">
+				           <p:cellEditor>
+				               <f:facet name="output"><h:outputText value="#{cliente.sexo}" /></f:facet>
+				               <f:facet name="input"><p:inputText value="#{cliente.sexo}" style="width:100%" label="Year"/></f:facet>
+				           </p:cellEditor>
+				       </p:column>
+				       
+				       <p:column headerText="CPF">
+				           <p:cellEditor>
+				               <f:facet name="output"><h:outputText value="#{cliente.cpf}" /></f:facet>
+				               <f:facet name="input"><p:inputMask id="cpf"  value="#{cliente.cpf}"  mask="999-999-999-99"/> </f:facet>
+				           </p:cellEditor>
+				       </p:column>
+				       
+				       <p:column headerText="Telefone">
+				           <p:cellEditor>
+				               <f:facet name="output"><h:outputText value="#{cliente.telefone}" /></f:facet>
+				               <f:facet name="input"><p:inputMask id="telefone"  value="#{cliente.telefone}" mask="(99) 9999-9999"/> </f:facet>
+				           </p:cellEditor>
+				       </p:column>
+				       
+				       <p:column headerText="Celular">
+				           <p:cellEditor>
+				               <f:facet name="output"><h:outputText value="#{cliente.celular}" /></f:facet>
+				               <f:facet name="input"><p:inputMask id="celular"  value="#{cliente.celular}" mask="(99) 9999-9999"/> </f:facet>
+				           </p:cellEditor>
+				       </p:column>
+				       
+				       <p:column style="width:180px" headerText="E-mail">
+				           <p:cellEditor>
+				               <f:facet name="output"><h:outputText value="#{cliente.email}" /></f:facet>
+				               <f:facet name="input"><p:inputText value="#{cliente.email}" style="width:100%" label="Year"/></f:facet>
+				           </p:cellEditor>
+				       </p:column>
+				       
+				       <p:column style="width:300px" headerText="Endereço">
+				           <p:cellEditor>
+				               <f:facet name="output"><h:outputText value="#{cliente.endereco}" /></f:facet>
+				               <f:facet name="input"><p:inputText value="#{cliente.endereco}" style="width:100%" label="Year"/></f:facet>
+				           </p:cellEditor>
+				       </p:column>
+				       
+				       <p:column style="width:30px"><f:facet name="header"></f:facet ><h:commandLink action="#{cadastroCliente.excluir(cliente)}"> <p:graphicImage value="/images/excluir.jpg"  width="20" height="20"/> </h:commandLink></p:column> 
+				 
+				       <p:column style="width:32px">
+				           <p:rowEditor />
+				       </p:column>
+				   </p:dataTable>
+				 
+   
+ 
+ 
+	</h:form>
+		<!-- FINALIZA TESTE  -->
+        </p:panelGrid>
+        
+        </p:panel>
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="south" id="rodape"  size="70" resizable="false" closable="false" collapsible="false">
+			<p align="center">© 2014 Todos os direitos reservados. v2.0</p>
+		</p:layoutUnit>
+
+	</p:layout>
+</h:body>
+</html>

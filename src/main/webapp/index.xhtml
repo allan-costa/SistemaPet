@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Principal</title>
+	
+	<link rel="stylesheet" type="text/css" href="CSS/estilo-padrao.css" />
+	
+	
+	<f:metadata>
+    	<f:event listener="#{loginMB.verificaLogin}" type="preRenderView"/>
+	</f:metadata>  
+
+</h:head>
+<h:body >
+	<p:layout fullPage="true" >
+	
+		<p:layoutUnit position="north" id="topo"  size="139" resizable="false" closable="false" collapsible="false">
+		
+		<table>
+		  <tr>
+		    <td ><h:graphicImage url="/images/logo2.bmp" width="235" height="128" /></td>
+		    <td id="menu-top" align="right" valign="bottom">
+		    <h:form >
+			    <p:tabMenu activeIndex="0" >
+		    		<p:menuitem value="Principal" url="/index.jsf" icon="ui-icon-home"/>
+		    		<p:menuitem value="Configurações" url="/ui/tabMenuSocial.jsf" icon="ui-icon-wrench" />
+		    		<p:menuitem value="Ajuda" url="/ui/tabMenuSupport.jsf" icon="ui-icon-help"/>
+		    		<p:menuitem value="Sair" actionListener="#{loginMB.logout}"  icon="ui-icon-power" />
+				</p:tabMenu>
+			</h:form>
+		</td>
+		
+		<td id="usuario" align="right">
+			  <h:outputText value="Bem vindo:  #{loginMB.usuario.login}"/>
+			
+		</td>
+		
+		<td align="right" >
+			<p:clock id="data"/>
+
+		</td>
+			
+		  </tr>
+
+		</table>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="238" resizable="false" closable="false" collapsible="false">
+			<h:form> 
+    <p:growl id="messages" showDetail="false"/>
+ 
+    <p:menu  id="menu">
+        <p:submenu label="Menu">            
+			<p:menuitem value="Cadastro de Animais" url="/cadastro-animal.jsf" icon="ui-icon-grip-dotted-horizontal" />
+			<p:menuitem value="Cadastro de Clientes" url="/cadastro-cliente.jsf" icon="ui-icon-grip-dotted-horizontal"/>
+			<p:menuitem value="Controle de Estoque" icon="ui-icon-grip-dotted-horizontal" />
+			<p:menuitem value="Fornecedores"  icon="ui-icon-grip-dotted-horizontal"/>		
+            <p:menuitem value="Financeiro" icon="ui-icon-grip-dotted-horizontal" />
+            <p:menuitem value="Serviços" icon="ui-icon-grip-dotted-horizontal" />
+            <p:menuitem value="Agenda" outcome="/agenda" icon="ui-icon-calendar"/>
+            <p:menuitem value="Mensagens"  icon="ui-icon-mail-closed"/>
+            <p:menuitem value="Consultas"  icon="ui-icon-search"/>
+            <p:menuitem value="Vendas"  icon="ui-icon-cart"/>
+            <p:menuitem value="Controle de Usuário"  icon="ui-icon-person"/> 
+        </p:submenu>
+    </p:menu>
+    </h:form>
+
+		</p:layoutUnit>
+
+		<p:layoutUnit  position="center">
+			<h:form>
+				<table id="centro-index" align="center" CELLSPACING="50">
+				<tr>
+					
+					<td> Cadastros <br/> <a href="/....jsf">  <h:graphicImage url="/images/cad-usuario.jpg" width="80" height="80" />Animais, produtos, serviços, clientes </a></td>
+					
+					<td> Financeiro <br/> <a href="/....jsf"><h:graphicImage url="/images/financeiro.png" width="80" height="80" /> Caixa, contas, resultados, etc..</a></td>
+					
+				</tr>
+				
+				<tr>
+					<td> Vendas <br/> <a href="/....jsf"><h:graphicImage url="/images/vendas.jpg" width="80" height="80" /> Venda balcão</a></td>
+					<td> Agenda <br/> <a href="/....jsf"><h:graphicImage url="/images/agenda.png" width="80" height="80" /> Agenda de compromissos</a></td>
+					
+				</tr>
+				
+				<tr>
+					<td> Serviços <br/> <a href="servicos.jsf"><h:graphicImage url="/images/servicos.png" width="80" height="80" /> Ordem de serviço</a></td>
+					<td> Operacional <br/> <a href="/....jsf"><h:graphicImage url="/images/operacional.png" width="80" height="80" /> Empresa, Backup, Manutenção, Etc...</a></td>
+					
+				</tr>
+				
+				</table>
+
+
+			</h:form>
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="south" id="rodape"  size="70" resizable="false" closable="false" collapsible="false">
+			<p align="center">© 2014 Todos os direitos reservados. v2.0</p>  
+		</p:layoutUnit>
+
+	</p:layout>
+</h:body>
+</html>
