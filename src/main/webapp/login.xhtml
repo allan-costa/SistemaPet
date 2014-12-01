@@ -19,8 +19,7 @@
 <h:body>
 
 	<div id="principal">
-		<p:layout style="min-width:400px;min-height:270px;" id="layout" >
-			<p:layoutUnit position="west" resizable="false" size="200" minSize="250" >
+				
 				<h:form>
 				<div id="msg1">Seja Bem vindo</div>
 				<br />
@@ -31,15 +30,17 @@
 					<h:outputLabel value="Nome:" for="nome" />
 					<h:inputText id="login" label="Login" value="#{loginMB.usuario.login}" required="true" style="width:180px; height: 20px; line-height: 15px;" />
 					
-					<h:outputLabel value="Senha:" for="senha" />
+					<h:outputLabel  value="Senha:" for="senha" />
 					<h:inputSecret id="senha" label="Senha" value="#{loginMB.usuario.senha}" required="true" style="width:180px; height: 20px; line-height: 15px;" />
-				
+					
+					<div align="right">
+						<h:messages id="msgErro" style="color: red"/>
+						<h:commandButton type="submit" action="#{loginMB.doEfetuarLogin}" value="Entrar" />
+					</div>
+					
 				</h:panelGrid>
 				
-				<div align="right">
-				<h:messages id="msgErro" style="color: red"/>
-					<h:commandButton type="submit" action="#{loginMB.doEfetuarLogin}" value="Entrar" />
-				</div>
+				
 
 
 				<div id="msg2">
@@ -50,13 +51,13 @@
 				</div>
 				<br />
 				</h:form>
-			</p:layoutUnit>
 			
-			<p:layoutUnit position="center" resizable="false" size="200">
-				<h:graphicImage width="258" url="/images/logo2.bmp" />
-			</p:layoutUnit>
 			
-		</p:layout>
+		
+			
+		
+			
+		
 	</div>
 
 </h:body>
