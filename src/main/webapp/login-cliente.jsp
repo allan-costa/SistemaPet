@@ -31,7 +31,6 @@
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                             
                         <form class="form-horizontal" method="post" action="login_servlet">
-                                    
                             <div style="margin-bottom: 25px" class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                         <input id="login-username" type="text" class="form-control" name="usuario" value="" placeholder="nome de usuário ou email">                                        
@@ -42,8 +41,6 @@
                                         <input id="login-password" type="password" class="form-control" name="senha" placeholder="senha">
                                     </div>
                                     
-
-                                
                             <div class="input-group">
                                       <div class="checkbox">
                                         <label>
@@ -51,8 +48,7 @@
                                         </label>
                                       </div>
                                     </div>
-
-
+                                    
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
 
@@ -92,7 +88,6 @@
                                     <p>Error:</p>
                                     <span></span>
                                 </div>
-                                  
                                 <div class="form-group">
                                     <label for="email" class="col-md-3 control-label">Email</label>
                                     <div class="col-md-9">
@@ -100,12 +95,10 @@
                                         <p class="help-block">Por favor informe seu E-mail</p>
                                     </div>
                                 </div>
-                                    
                                 <div class="form-group">
                                     <label for="firstname" class="col-md-3 control-label">Primeiro Nome</label>
                                     <div class="col-md-9">
                                         <input type="text" class="form-control" name="firstname" placeholder="Primeiro nome">
-                                         
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -133,10 +126,6 @@
                             </form>
                          </div>
                     </div>
-
-               
-               
-                
          </div> 
     </div>
     

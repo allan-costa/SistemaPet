@@ -23,15 +23,8 @@ public class LoginUserServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-
-		
-
-			
 			String usuario = request.getParameter("usuario");
-
-			String senha = request.getParameter("senha");
-			
+			String senha = request.getParameter("senha");			
 			System.out.println("Redirecinando cliente para tela de serviços");
 			response.sendRedirect("servico-cliente.jsp");
 	}

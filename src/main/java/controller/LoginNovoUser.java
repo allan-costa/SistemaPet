@@ -22,22 +22,18 @@ import model.Usuario;
 public class LoginNovoUser extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 			
 			String login = request.getParameter("usuario");
 			String senha = request.getParameter("senha");
-			
 			Usuario cliente = new Usuario();
 			
 			cliente.setLogin(login);
 			cliente.setSenha(senha);
-			
 			ClienteService clienteService = new ClienteService();
 			
 			System.out.println("Redirecinando cliente para tela de serviços");
 			response.sendRedirect("servico-cliente.jsp");
 	}
-
 }
